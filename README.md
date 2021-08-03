@@ -1,3 +1,40 @@
+# Quick Start:
++ **Note**: This boilerplate is set in development enviroment
++ Clone
++ Run `docker-compose up -d`
+
+##### Enjoy!, services:  
++ app
+  + Alpine > Nginx + PHP FPM 7.4 (with xdebug) 
+    - 8000:80, 8443:443, 10022:22
+    - app.docker.test:80
+
+
++ mysql
+  + MariaDB 10 (focal) 
+    - 13306:3306
+    - mysql:/var/lib/mysql
+
+
++ redis
+  + Redis
+    - redis:/data
+
+
++ mail
+  + Mailhog
+    - 8025:8025
+    - mail.docker.test:8025
+
+
++ phpmyadmin
+  + PhpMyAdmin
+    - phpmyadmin:/sessions
+    - pma.docker.test:80
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 ![PHP Docker Boilerplate](https://static.webdevops.io/php-docker-boilerplate.svg)
 
 [![latest v5.2.0-beta3](https://img.shields.io/badge/latest-v5.2.0_beta3-green.svg?style=flat)](https://github.com/webdevops/php-docker-boilerplate/releases/tag/5.2.0-beta3)
