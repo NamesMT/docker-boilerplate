@@ -3,16 +3,6 @@
 + Clone
 + Start the container: `docker-compose up -d`
 
-#### Additional, virtual host setup:
-Run this docker image: https://hub.docker.com/r/nginxproxy/nginx-proxy  
-Add these to your hosts file:
-```
-127.0.0.1      docker.test
-127.0.0.1      pma.docker.test
-127.0.0.1      app.docker.test
-127.0.0.1      mail.docker.test
-```
-Restart your container: `docker-compose stop && docker-compose up -d`
 ##### Enjoy!, services:
 + app
   + Alpine > Nginx + PHP FPM 7.4 (with xdebug) 
@@ -42,6 +32,36 @@ Restart your container: `docker-compose stop && docker-compose up -d`
     - phpmyadmin:/sessions
     - pma.docker.test:80
 
+
+#### Additional, virtual host setup:
+Run this docker image: https://hub.docker.com/r/nginxproxy/nginx-proxy  
+Add these to your hosts file:
+```
+127.0.0.1      docker.test
+127.0.0.1      pma.docker.test
+127.0.0.1      app.docker.test
+127.0.0.1      mail.docker.test
+```
+Restart your container: `docker-compose stop && docker-compose up -d`
+
+
+#### To use XDebug, remember to set pathMappings, example for VSCode:
+```
+{
+    "version": "0.2.0",
+    "configurations": [{
+            "name": "Listen for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/app": "${workspaceRoot}/app",
+            },
+        },
+    ]
+}
+```
+`PHPStorm`: set path mappings here: `File -> Settings ->Languages and Frameworks -> PHP -> Servers`.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
