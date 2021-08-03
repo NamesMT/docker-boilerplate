@@ -1,9 +1,19 @@
 # Quick Start:
 + **Note**: This boilerplate is set in development enviroment
 + Clone
-+ Run `docker-compose up -d`
++ Start the container: `docker-compose up -d`
 
-##### Enjoy!, services:  
+#### Additional, virtual host setup:
+Run this docker image: https://hub.docker.com/r/nginxproxy/nginx-proxy  
+Add these to your hosts file:
+```
+127.0.0.1      docker.test
+127.0.0.1      pma.docker.test
+127.0.0.1      app.docker.test
+127.0.0.1      mail.docker.test
+```
+Restart your container: `docker-compose stop && docker-compose up -d`
+##### Enjoy!, services:
 + app
   + Alpine > Nginx + PHP FPM 7.4 (with xdebug) 
     - 8000:80, 8443:443, 10022:22
@@ -24,7 +34,7 @@
 + mail
   + Mailhog
     - 8025:8025
-    - mail.docker.test:8025
+    - mail.docker.test:8025 (it links the port 8025 to 80 | access without 8025)
 
 
 + phpmyadmin
